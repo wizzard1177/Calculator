@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 public class Actions {
 
     public int cast(int a, int b,String sign){
@@ -11,7 +9,7 @@ public class Actions {
                 break;
             case "*": result= a * b;
                 break;
-            case "/": result = (b!=0) ? a/b : -1;
+            case "/": result = a / b;
                 break;
         }
         return result;
