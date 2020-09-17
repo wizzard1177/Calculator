@@ -19,7 +19,7 @@ public class Calculator {
             System.out.print("Ввведи пример и нажми ENTER -> ");
             str = scanner.nextLine();
             str = str.replaceAll(" ", "");
-            line.convertToNam(str);
+            line.convert(str);
             System.out.println("Результат -> " + act.cast(line.getA(), line.getB(), line.getSign()));
             System.out.println("Для завершения рограммы введите /end");
         }
