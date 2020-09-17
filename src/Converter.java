@@ -1,10 +1,8 @@
 import java.util.TreeMap;
 
 public class Converter {
-    private final static TreeMap<Integer, String> map = new TreeMap<>();
-
-    static {
-
+    private TreeMap<Integer, String> map = new TreeMap<>();
+    Converter(){
         map.put(1000, "M");
         map.put(900, "CM");
         map.put(500, "D");
@@ -18,10 +16,9 @@ public class Converter {
         map.put(5, "V");
         map.put(4, "IV");
         map.put(1, "I");
-
     }
 
-    public final static String toRoman(int number) {
+    public String toRoman(int number) {
         int l =  map.floorKey(number);
         if ( number == l ) {
             return map.get(number);

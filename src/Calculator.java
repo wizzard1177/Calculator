@@ -5,11 +5,13 @@ public class Calculator {
     private Line line;
     private Actions act;
     private int res;
+    private Converter converter;
 
 
     Calculator(){
         line = new Line();
         act = new Actions();
+        converter = new Converter();
     }
 
     public void start(){
@@ -23,7 +25,7 @@ public class Calculator {
             line.convert(str);
             res = act.cast(line.getNumbers(), line.getSign());
             if (line.getNumbers()[0].isRimFlag()) {
-                System.out.println("Результат -> " + Converter.toRoman(res));
+                System.out.println("Результат -> " + converter.toRoman(res));
             }else {
                 System.out.println("Результат -> " + res);
             }
