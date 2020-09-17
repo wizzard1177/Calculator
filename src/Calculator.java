@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 public class Calculator {
-    String str;
-    Line line;
-    Actions act;
+    private String str;
+    private Line line;
+    private Actions act;
+    private int res;
 
 
     Calculator(){
@@ -20,7 +21,12 @@ public class Calculator {
             str = scanner.nextLine();
             str = str.replaceAll(" ", "");
             line.convert(str);
-            System.out.println("Результат -> " + act.cast(line.getA(), line.getB(), line.getSign()));
+            res = act.cast(line.getNumbers(), line.getSign());
+            if (line.getNumbers()[0].isRimFlag()) {
+                System.out.println("Результат -> " + Converter.toRoman(res));
+            }else {
+                System.out.println("Результат -> " + res);
+            }
             System.out.println("Для завершения рограммы введите /end");
         }
     }

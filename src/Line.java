@@ -1,7 +1,8 @@
+import java.util.TreeMap;
+
 public class Line {
     private String in;
-    private int a;
-    private int b;
+    private Number[] numbers;
     private String sign;
 
     public void convert(String str){
@@ -10,17 +11,23 @@ public class Line {
 
         checkSign(str);
         String[] tokens = in.split(" ");
-        if (tokens.length!=2){
-            try {
-                throw new Exception("Ошибка формы");
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.exit(0);
+        numbers = new Number[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+            if(checkNam(tokens[i])){
+                numbers[i] = new Number(Integer.valueOf(tokens[i]));
+            } else {
+                numbers[i] = new Number(convertToNumber(tokens[i]));
+                numbers[i].setRimFlag(true);
+            }
+            if (i>2){
+                try {
+                    throw new Exception("Ошибка формы");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.exit(0);
+                }
             }
         }
-        a = (checkNam(tokens[0]))? Integer.valueOf(tokens[0]) : convertToNumber(tokens[0]);
-        b = (checkNam(tokens[1]))? Integer.valueOf(tokens[1]) : convertToNumber(tokens[1]);
-
     }
 
     private int convertToNumber(String num){
@@ -104,12 +111,8 @@ public class Line {
             }
     }
 
-    public int getA() {
-        return a;
-    }
-
-    public int getB() {
-        return b;
+    public Number[] getNumbers() {
+        return numbers;
     }
 
     public String getSign() {
