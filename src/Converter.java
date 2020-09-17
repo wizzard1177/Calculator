@@ -19,6 +19,14 @@ public class Converter {
     }
 
     public String toRoman(int number) {
+        if (number<1){
+            try {
+                throw new Exception("Римские цифры - это натуральные числа");
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.exit(0);
+            }
+        }
         int l =  map.floorKey(number);
         if ( number == l ) {
             return map.get(number);
