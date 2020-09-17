@@ -1,5 +1,3 @@
-import java.util.TreeMap;
-
 public class Line {
     private String in;
     private Number[] numbers;
